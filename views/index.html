@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="button1" onclick="btn1()">버튼1 </button> <input type="text" placeholder="버튼1값" id="text_1">
+    <button type="button" id="button2" onclick="btn2()">버튼2 </button> <input type="text" placeholder="버튼2값" id="text2">
+    <button type="button" id="button3" onclick="btn3()">버튼3 </button> <input type="text" placeholder="버튼3값" id="text3">
+    
+    {% if text1 %}
+    <h2 id="h2">{{text1}}</h2>
+    {% endif %}
+    
+</body>
+
+</html>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    async function btn1() {
+        const text1 = document.getElementById('text_1').value;
+        await axios.post('/ex/btn1', { text1 })
+            .then((cal) => {
+                //document.getElementById("h2").innerText=cal.data.text1;
+            })
+            .catch((err) => {
+                alert('error');
+            });
+    };
+    function btn2() {
+        const text = document.getElementById('text2').value;
+        location.href = '/ex/btn2';
+    }
+    function btn3() {
+        const text = document.getElementById('text3').value;
+        location.href = '/ex/btn3';
+    }
+
+</script>
